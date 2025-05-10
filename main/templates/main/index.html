@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kavuri Krupavani | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <img src="https://media-hosting.imagekit.io/8fb4c5eb289746ff/profile.jpg?Expires=1841414438&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=GHbKNkin9Y~0t5kuae0Qk7U4oaw7jKyo10kQRkC0HffO4dPJyWwE551LI~oIT1UoOLIgpURkWXI9fXJ6expe~AotgHwwPXCZAQZwn73xAY7lMRo6WOXAhO31A45ADUcUlmm0hDW8DtEsOZvIW8ZPnUhcdn8KCcUHjJBhmcX8L~D-raAW7fxjinz7kuL3wORarCAaNS-0alxkEZ9tLzOykOAKjyhZ6XXVQJ99HGHKVUc5xUcPj4Yzv7b-ApQ9~kKWTmte0D57bQ54D2-8Z5WqfXkuKRwz9A1C3ZiPTaMuSHZvvl29ZQW0r~kZguuOrncXuxs5L3fkGFXrE4ETBC5tzQ__" alt="Profile Photo" class="profile">
+        <div>
+            <h1>Kavuri Krupavani</h1>
+            <p>Engineering Student | Future Innovator | Tech Explorer</p>
+        </div>
+        <!-- Dark Mode Toggle -->
+        <button onclick="toggleDarkMode()" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.4rem; cursor: pointer;">🌓</button>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- About Me Section -->
+        <div class="section">
+            <h2>About Me</h2>
+            <p>
+                I'm Kavuri Krupavani, a 2nd-year B.Tech student with a deep interest in full-stack development and data science. I’ve actively contributed in internships at 
+                <strong>TechSonix</strong>, <strong>Future Interns</strong>, and <strong>SkillCraft Technology</strong>, where I’ve worked on real-time data projects and web applications. 
+                I also build open-source tools like <strong>Cosmic Code Cracker</strong> and continuously explore how data and code can power innovation.
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <h2>Skills</h2>
+            {% for skill in skills %}
+            <div class="skill">
+                <div class="skill-name">{{ skill.name }}</div>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: {{ skill.level }}%;"></div>
+                </div>
+            </div>
+            {% empty %}
+            <ul>
+                <li>C</li>
+                <li>Java</li>
+                <li>Python</li>
+                <li>HTML / CSS / JavaScript</li>
+                <li>MERN Stack</li>
+            </ul>
+            {% endfor %}
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <h2>Projects</h2>
+            <div class="projects">
+                {% for project in projects %}
+                <div class="project-card">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width:100%; border-radius: 5px;">
+                    {% endif %}
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" target="_blank">🔗 View on GitHub</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <!-- Static Cards -->
+                <div class="project-card">
+                    <h3>TechSonix Internship</h3>
+                    <p>Currently building a dynamic Django-based portfolio platform as part of the employability program, focusing on backend architecture and front-end responsiveness.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Future Interns</h3>
+                    <p>Worked on real-time data analysis and visualization projects using Python and Pandas. Learned domain-driven design in a collaborative internship environment.</p>
+                </div>
+                <div class="project-card">
+                    <h3>SkillCraft Technology</h3>
+                    <p>Engaged in applied data science and basic AI development projects. Contributed to team-based dashboards and Python automation scripts.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="section">
+            <h2>Achievements</h2>
+            <ul>
+                <li>🏅 Gold Medalist – 1st Year B.Tech Branch Topper</li>
+                <li>🚀 Built: <a href="https://github.com/krupavani-29/cosmic-code-cracker" target="_blank">Cosmic Code Cracker</a></li>
+                <li>💼 Internship – TechSonix</li>
+                <li>💼 Internship – Future Interns</li>
+                <li>💼 Internship – SkillCraft Technology</li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:kavurikrupavani@gmail.com">kavurikrupavani@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/kavuri-krupavani-218190298" target="_blank">www.linkedin.com/in/kavuri-krupavani-218190298</a></p>
+            <p>GitHub: <a href="https://github.com/krupavani-29" target="_blank">github.com/krupavani-29</a></p>
+        </div>
+    </div>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
